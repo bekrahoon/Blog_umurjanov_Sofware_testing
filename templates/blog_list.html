@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+</head>
+<body>
+    <h1>Список блогов</h1>
+    <ul>
+        {% for i in blog %}
+        <li>
+            <h2>{{ i.title }}</h2>
+            <img src="{{ i.image.url }}" alt="" width="300" height="300">
+            <p>{{ i.created_at }}</p>
+            <a href="/blog_list/{{ i.id }}/">Подробнее</a>
+        </li>
+        {% empty %}
+        <p>Блогов пока нет</p>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

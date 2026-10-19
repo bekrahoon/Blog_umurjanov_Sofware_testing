@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Detail</title>
+</head>
+<body>
+    <h1>{{ blog_id.title }}</h1>
+    <p>{{ blog_id.description }}</p>
+    <img src="{{ blog_id.image.url }}" width="300" height="200" alt="">
+    
+  <p>{{ blog_id.author }}{% if blog_id.author == 'Ivanov Ivan' %} (Главный редактор){% endif %}</p>
+
+    <p>Просмотров: {{ blog_id.likes }}</p>
+    <p>{{ blog_id.created_at }}</p>
+    <p>{{ blog_id.updated_at }}</p>
+</body>
+</html>
