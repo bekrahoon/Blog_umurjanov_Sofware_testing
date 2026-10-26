@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
+    'products',
 ]
+
+# Все тесты проекта (python manage.py test) + отчёт в Word: Test_Report.docx
+TEST_RUNNER = 'blog.test_runner.WordReportRunner'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

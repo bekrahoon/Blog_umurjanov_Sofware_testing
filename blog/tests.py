@@ -15,12 +15,14 @@ class BlogTests(TestCase):
             author = "Тестовый Автор"
         )
     def test_blog_model_creation(self):
+        """Модель Blog создаётся с нужными полями, __str__ возвращает заголовок"""
         self.assertEqual(self.blog.title, 'Тестовый заголовок')
         self.assertEqual(self.blog.author, 'Тестовый Автор')
 
         self.assertEqual(str(self.blog), 'Тестовый заголовок')
 
     def test_blog_list_view(self):
+        """Список блогов: код 200, шаблон blog_list.html, блог на странице"""
         url = reverse('blog_list')
         response = self.client.get(url)
 
@@ -31,12 +33,14 @@ class BlogTests(TestCase):
         self.assertContains(response, 'Тестовый заголовок')
 
     def test_blog_detail_not_found(self):
+        """Несуществующий id на детальной странице даёт 404"""
         url = reverse('blog_detail', args=[999])
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, 404)
 
     def test_author_display_with_rank(self):
+        """У автора по умолчанию (Ivanov Ivan) есть приписка «Главный редактор»"""
         default_blog = Blog.objects.create(
             title = 'Пост Иванова',
             description = 'Текст....',

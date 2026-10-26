@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+</head>
+<body>
+    <h1>Список товаров</h1>
+    <a href="{% url 'product_create' %}">+ Добавить товар</a>
+    <ul>
+        {% for p in products %}
+        <li>
+            <a href="{% url 'product_detail' p.id %}">{{ p.name }}</a> — {{ p.price }} сом ({{ p.quantity }} шт.)
+            | <a href="{% url 'product_update' p.id %}">Изменить</a>
+            | <a href="{% url 'product_delete' p.id %}">Удалить</a>
+        </li>
+        {% empty %}
+        <p>Товаров пока нет</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
