@@ -22,7 +22,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-from docx.shared import Pt, RGBColor
+from docx.shared import Cm, Pt, RGBColor
 
 STATUS_TEXT = {
     'success': 'Успешно',
@@ -186,6 +186,14 @@ def build_report(records, path):
             status += '\n' + rec['detail']
         _cell_text(cells[4], status, bold=True, color=STATUS_COLOR[rec['status']])
         _shade(cells[4], STATUS_FILL[rec['status']])
+
+    table.autofit = False
+    widths = [Cm(1.0), Cm(3.2), Cm(4.6), Cm(5.7), Cm(2.5)]
+    for column, width in zip(table.columns, widths):
+        column.width = width
+    for row in table.rows:
+        for cell, width in zip(row.cells, widths):
+            cell.width = width
 
     doc.add_heading('3. Код тестов', level=1)
     for i, rec in enumerate(records, start=1):
