@@ -146,7 +146,7 @@ def build_report(records, path):
     run.bold = True
     run.font.size = Pt(18)
 
-    doc.add_paragraph('Проект: Django Blog (blog)')
+    doc.add_paragraph('Проект: Django — приложения blog и products (CRUD)')
     doc.add_paragraph('Студент: Умуржанов Аба-Бекрахун')
     doc.add_paragraph('Дата прогона: ' + datetime.datetime.now().strftime('%d.%m.%Y %H:%M'))
     doc.add_paragraph('Отчёт сформирован автоматически командой: python manage.py test')
