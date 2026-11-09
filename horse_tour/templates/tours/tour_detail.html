@@ -1,0 +1,33 @@
+{% extends 'tours/base.html' %}
+{% block title %}{{ tour.title }}{% endblock %}
+{% block content %}
+<h1>{{ tour.title }}</h1>
+<p>{{ tour.description }}</p>
+<p>Цена: {{ tour.price }} сом · Длительность: {{ tour.duration_hours }} ч.</p>
+<p>Категории:
+    {% for category in tour.categories.all %}<span class="tag">{{ category.name }}</span>{% endfor %}
+</p>
+
+<h2>Маршрут (1 к 1)</h2>
+{% if tour.route %}
+    <p>{{ tour.route.start_point }} → {{ tour.route.end_point }}, {{ tour.route.distance_km }} км</p>
+{% else %}
+    <p>Маршрут не указан.</p>
+{% endif %}
+
+<h2>Покупки (1 ко многим)</h2>
+<ul>
+    {% for booking in tour.bookings.all %}
+        <li>{{ booking.customer }} — {{ booking.date }} {{ booking.time|time:"H:i" }}</li>
+    {% empty %}
+        <li>Пока никто не купил.</li>
+    {% endfor %}
+</ul>
+
+<h2>Комментарии (1 ко многим)</h2>
+{% for comment in tour.comments.all %}
+    <div class="card"><b>{{ comment.customer }}</b> ({{ comment.mark }}/5): {{ comment.text }}</div>
+{% empty %}
+    <p>Комментариев нет.</p>
+{% endfor %}
+{% endblock %}

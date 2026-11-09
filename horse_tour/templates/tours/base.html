@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Конный тур{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 0 12px; }
+        nav a { margin-right: 12px; }
+        .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .errorlist { color: #c0392b; }
+        .tag { background: #eef; border-radius: 4px; padding: 2px 6px; margin-right: 4px; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="{% url 'tour_list' %}">Туры</a>
+    <a href="{% url 'create_category' %}">+ Категория</a>
+    <a href="{% url 'create_tour' %}">+ Тур</a>
+    <a href="{% url 'create_route' %}">+ Маршрут</a>
+    <a href="{% url 'create_customer' %}">+ Клиент</a>
+    <a href="{% url 'create_booking' %}">Купить тур</a>
+    <a href="{% url 'create_comment' %}">Комментарий</a>
+    <a href="/admin/doc/">Документация</a>
+</nav>
+<hr>
+{% block content %}{% endblock %}
+</body>
+</html>

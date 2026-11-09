@@ -1,0 +1,13 @@
+{% extends 'tours/base.html' %}
+{% block content %}
+<h1>Конные туры</h1>
+{% for tour in tours %}
+    <div class="card">
+        <h3><a href="{% url 'tour_detail' tour.id %}">{{ tour.title }}</a></h3>
+        <p>{{ tour.price }} сом · {{ tour.duration_hours }} ч.</p>
+        {% for category in tour.categories.all %}<span class="tag">{{ category.name }}</span>{% endfor %}
+    </div>
+{% empty %}
+    <p>Туров пока нет.</p>
+{% endfor %}
+{% endblock %}
