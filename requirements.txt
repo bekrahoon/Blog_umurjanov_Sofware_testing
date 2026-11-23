@@ -1,3 +1,4 @@
 Django>=6.0
 Pillow
 python-docx
+django-simple-captcha

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'products',
+    'users',
+    'captcha',
 ]
 
 # Все тесты проекта (python manage.py test) + отчёт в Word: Test_Report.docx
@@ -127,6 +129,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
+
+# Капча (django-simple-captcha)
+CAPTCHA_LENGTH = 5
+CAPTCHA_TIMEOUT = 5  # минут
+
+LOGIN_URL = '/login/'
 
 MAILERS = {
     'default': {
